@@ -1,0 +1,12 @@
+{
+  "name": "suite-ts-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "pnpm workspace monorepo fixture (TypeScript with Node type stripping)",
+  "scripts": {
+    "test": "node --test \"packages/*/test/**/*.test.ts\"",
+    "test:core": "node --test \"packages/core/test/**/*.test.ts\"",
+    "test:cli": "node --test \"packages/cli/test/**/*.test.ts\""
+  }
+}

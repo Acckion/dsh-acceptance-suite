@@ -1,0 +1,10 @@
+{
+  "name": "suite-node-ts-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Single-package Node fixture with an injected calculation bug and README drift",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\""
+  }
+}

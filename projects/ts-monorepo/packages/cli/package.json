@@ -1,0 +1,8 @@
+{
+  "name": "@suite/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "CLI formatting entry built on @suite/core",
+  "exports": "./src/main.ts"
+}

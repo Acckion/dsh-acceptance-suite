@@ -1,0 +1,33 @@
+diff --git a/projects/ts-monorepo/packages/core/src/index.ts b/projects/ts-monorepo/packages/core/src/index.ts
+--- a/projects/ts-monorepo/packages/core/src/index.ts
++++ b/projects/ts-monorepo/packages/core/src/index.ts
+@@ -13,4 +13,8 @@ export function chunk<T>(items: T[], size: number): T[][] {
+     result.push(items.slice(start, start + size));
+   }
+   return result;
+ }
++
++export function sum(values: number[]): number {
++  return values.reduce((total, value) => total + value, 0);
++}
+diff --git a/projects/ts-monorepo/packages/core/test/index.test.ts b/projects/ts-monorepo/packages/core/test/index.test.ts
+--- a/projects/ts-monorepo/packages/core/test/index.test.ts
++++ b/projects/ts-monorepo/packages/core/test/index.test.ts
+@@ -1,7 +1,7 @@
+ import { test } from 'node:test';
+ import assert from 'node:assert/strict';
+-import { slugify, chunk } from '../src/index.ts';
++import { slugify, chunk, sum } from '../src/index.ts';
+
+ test('slugify normalizes titles', () => {
+   assert.equal(slugify('Hello, World!'), 'hello-world');
+@@ -16,4 +16,8 @@ test('chunk splits arrays into buckets', () => {
+
+ test('chunk rejects non-positive size', () => {
+   assert.throws(() => chunk([1], 0), RangeError);
+ });
++
++test('sum adds all values', () => {
++  assert.equal(sum([1, 2, 3]), 6);
++  assert.equal(sum([]), 0);
++});

@@ -1,0 +1,16 @@
+diff --git a/.github/workflows/forced-failure.yml b/.github/workflows/forced-failure.yml
+new file mode 100644
+--- /dev/null
++++ b/.github/workflows/forced-failure.yml
+@@ -0,0 +1,11 @@
++name: forced-failure
++
++on:
++  push:
++  pull_request:
++
++jobs:
++  fail:
++    runs-on: ubuntu-latest
++    steps:
++      - run: exit 1

@@ -1,0 +1,11 @@
+diff --git a/projects/node-ts-app/src/calc.js b/projects/node-ts-app/src/calc.js
+--- a/projects/node-ts-app/src/calc.js
++++ b/projects/node-ts-app/src/calc.js
+@@ -1,6 +1,6 @@
+ export function add(a, b) {
+-  return a - b;
++  return a + b;
+ }
+
+ export function clamp(value, min, max) {
+   if (value < min) return min;
