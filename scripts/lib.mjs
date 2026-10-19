@@ -26,11 +26,11 @@ export function loadEnv() {
 export function requireToken() {
   loadEnv();
   const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
-  if (!token) {
-    console.error('缺少 GITHUB_TOKEN：请设置环境变量或复制 .env.example 为 .env 后填写。');
-    process.exit(1);
-  }
-  return token;
+  if (token) return token;
+  const res = spawnSync('gh', ['auth', 'token'], { encoding: 'utf8' });
+  if (res.status === 0 && res.stdout?.trim()) return res.stdout.trim();
+  console.error('缺少凭据：请设置 GITHUB_TOKEN、填写 .env，或运行 gh auth login。');
+  process.exit(1);
 }
 
 export async function api(token, method, apiPath, body) {
