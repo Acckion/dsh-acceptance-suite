@@ -12,5 +12,5 @@ npm test
 
 ## 结构
 
-- `packages/core`：纯函数库（slugify / chunk）。
+- `packages/core`：纯函数库（slugify / chunk / average / median），其中 `chunk` 对空数组会抛出 `RangeError`。
 - `packages/cli`：基于 core 的格式化入口。
