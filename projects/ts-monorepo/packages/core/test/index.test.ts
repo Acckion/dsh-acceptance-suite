@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { slugify, chunk } from '../src/index.ts';
+import { slugify, chunk, sum } from '../src/index.ts';
 
 test('slugify normalizes titles', () => {
   assert.equal(slugify('Hello, World!'), 'hello-world');
@@ -16,4 +16,9 @@ test('chunk splits arrays into buckets', () => {
 
 test('chunk rejects non-positive size', () => {
   assert.throws(() => chunk([1], 0), RangeError);
+});
+
+test('sum adds all values', () => {
+  assert.equal(sum([1, 2, 3]), 6);
+  assert.equal(sum([]), 0);
 });

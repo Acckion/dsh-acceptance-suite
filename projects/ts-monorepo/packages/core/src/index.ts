@@ -14,3 +14,7 @@ export function chunk<T>(items: T[], size: number): T[][] {
   }
   return result;
 }
+
+export function sum(values: number[]): number {
+  return values.reduce((total, value) => total + value, 0);
+}
