@@ -7,7 +7,7 @@
 - Node.js 24+、Git；可选：Python 3.10+、Rust stable（缺失时验证"环境阻塞"路径）
 - 一个有写权限的 GitHub 测试仓库（建议公开仓库，避免 Actions 分钟数受限）
 - GitHub Token：`Metadata`(read)、`Contents`(read/write)、`Issues`(read/write)、`Pull requests`(read/write)、`Actions`(read)
-- `.env`（不入库）：复制 `.env.example`，填入 `GITHUB_TOKEN`，按需覆盖 `SUITE_OWNER` / `SUITE_REPO`
+- 凭据三选一：环境变量 `GITHUB_TOKEN` ／ `.env` 文件（复制 `.env.example`，不入库）／ 本机已 `gh auth login`（脚本自动回退读取 `gh auth token`）
 
 ## 快速开始
 
