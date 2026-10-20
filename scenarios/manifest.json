@@ -1,0 +1,36 @@
+{
+  "owner": "LovelyFlash",
+  "repo": "dsh-acceptance-suite",
+  "repoFullName": "LovelyFlash/dsh-acceptance-suite",
+  "issueIds": {
+    "ISS-BUG": 1,
+    "ISS-DOCS": 2,
+    "ISS-FEATURE": 3,
+    "ISS-QUESTION": 4,
+    "ISS-MAINTENANCE": 5,
+    "ISS-NEEDSINFO": 6,
+    "ISS-DUP-A": 7,
+    "ISS-DUP-B": 8,
+    "ISS-CLOSED": 9,
+    "ISS-HIGH": 10,
+    "ISS-WAIT": 11
+  },
+  "issuesSeededAt": "2026-10-20T01:38:54.141Z",
+  "prIds": {
+    "PR-CLEAN": 12,
+    "PR-BUGGY": 13,
+    "PR-DRAFT": 14,
+    "PR-CI-FAIL": 15,
+    "PR-LINKED": 16
+  },
+  "prsSeededAt": "2026-10-20T01:39:52.584Z",
+  "secondary": {
+    "repo": "dsh-acceptance-secondary",
+    "fullName": "LovelyFlash/dsh-acceptance-secondary",
+    "issueIds": {
+      "SEC-FEATURE": 1,
+      "SEC-CLOSED": 2
+    },
+    "seededAt": "2026-10-20T01:40:15.725Z"
+  }
+}

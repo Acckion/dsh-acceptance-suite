@@ -12,11 +12,11 @@
     "test:node-app": "node --test \"projects/node-ts-app/test/**/*.test.js\"",
     "test:python": "python -m unittest discover -s projects/python-lib/tests -v",
     "test:rust": "cargo test --manifest-path projects/rust-cli/Cargo.toml",
-    "bootstrap": "node scripts/seed.mjs bootstrap",
-    "seed": "node scripts/seed.mjs all",
-    "seed:followup": "node scripts/seed.mjs followup",
-    "seed:secondary": "node scripts/seed.mjs secondary",
-    "status": "node scripts/status.mjs",
-    "cleanup": "node scripts/cleanup.mjs"
+    "bootstrap": "node --use-system-ca scripts/seed.mjs bootstrap",
+    "seed": "node --use-system-ca scripts/seed.mjs all",
+    "seed:followup": "node --use-system-ca scripts/seed.mjs followup",
+    "seed:secondary": "node --use-system-ca scripts/seed.mjs secondary",
+    "status": "node --use-system-ca scripts/status.mjs",
+    "cleanup": "node --use-system-ca scripts/cleanup.mjs"
   }
 }

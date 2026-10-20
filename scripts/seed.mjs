@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import {
   api,
@@ -340,6 +340,20 @@ async function seedIssues(token, ctx, recreate) {
   return numbers;
 }
 
+function stagePatchPaths(fullPatch) {
+  const text = readFileSync(fullPatch, 'utf8');
+  const paths = new Set();
+  for (const line of text.split('\n')) {
+    const match = /^(?:---|\+\+\+) [ab]\/(.+)$/.exec(line);
+    if (match) paths.add(match[1]);
+  }
+  if (paths.size === 0) {
+    console.error(`补丁中没有可暂存路径：${fullPatch}`);
+    process.exit(1);
+  }
+  git(['add', '-A', '--', ...paths]);
+}
+
 function applyBranchPatch(branch, patchFile, message) {
   const fullPatch = path.join(rootDir, patchFile);
   if (!existsSync(fullPatch)) {
@@ -357,7 +371,7 @@ function applyBranchPatch(branch, patchFile, message) {
     git(['branch', '-D', branch], { stdio: 'pipe', allowFail: true });
     process.exit(1);
   }
-  git(['add', '-A']);
+  stagePatchPaths(fullPatch);
   git(['-c', 'user.name=Acceptance Seed', '-c', 'user.email=seed@local', 'commit', '-q', '-m', message]);
   console.log(`已创建分支 ${branch} 并提交。`);
   return true;
