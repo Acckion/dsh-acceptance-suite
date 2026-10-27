@@ -14,3 +14,5 @@ export function chunk<T>(items: T[], size: number): T[][] {
   }
   return result;
 }
+
+export { splitBill } from './money.ts';
