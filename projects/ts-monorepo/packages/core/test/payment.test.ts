@@ -29,6 +29,14 @@ test('insufficient stock is rejected', () => {
   assert.throws(() => applyPayment({ ...initial(), stock: 1 }, { orderId: 'order-1', transactionId: 'tx-1' }), /Insufficient stock/);
 });
 
+test('duplicate notification for the same order and transaction is idempotent', () => {
+  const first = applyPayment(initial(), { orderId: 'order-1', transactionId: 'tx-1' });
+  const result = applyPayment(first, { orderId: 'order-1', transactionId: 'tx-1' });
+  assert.equal(result.stock, 8);
+  assert.equal(result.orders['order-1'].status, 'paid');
+  assert.equal(result.orders['order-1'].transactionId, 'tx-1');
+});
+
 test('processing does not mutate the input state or other orders', () => {
   const source = initial();
   const before = structuredClone(source);
