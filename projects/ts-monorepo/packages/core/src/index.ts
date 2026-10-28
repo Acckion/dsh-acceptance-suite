@@ -14,3 +14,6 @@ export function chunk<T>(items: T[], size: number): T[][] {
   }
   return result;
 }
+
+export { applyPayment } from './payment.ts';
+export type { Order, ShopState, PaymentNotification } from './payment.ts';
