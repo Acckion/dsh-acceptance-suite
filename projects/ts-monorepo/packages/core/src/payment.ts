@@ -17,6 +17,7 @@ export interface PaymentNotification {
 export function applyPayment(state: ShopState, notification: PaymentNotification): ShopState {
   const order = state.orders[notification.orderId];
   if (!order) throw new Error('Order not found');
+  if (order.status === 'paid') return state;
   if (!notification.transactionId.trim()) throw new Error('Transaction ID is required');
   if (!Number.isSafeInteger(order.quantity) || order.quantity <= 0) {
     throw new RangeError('Order quantity must be a positive integer');

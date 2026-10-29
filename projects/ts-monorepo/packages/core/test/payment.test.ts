@@ -36,3 +36,11 @@ test('processing does not mutate the input state or other orders', () => {
   assert.deepEqual(source, before);
   assert.deepEqual(result.orders['order-2'], source.orders['order-2']);
 });
+
+test('a duplicate notification for the same order and transaction ID is idempotent', () => {
+  const first = applyPayment(initial(), { orderId: 'order-1', transactionId: 'tx-1' });
+  const result = applyPayment(first, { orderId: 'order-1', transactionId: 'tx-1' });
+  assert.equal(result.stock, 8);
+  assert.equal(result.orders['order-1'].status, 'paid');
+  assert.equal(result.orders['order-1'].transactionId, 'tx-1');
+});
